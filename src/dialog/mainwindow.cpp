@@ -307,6 +307,11 @@ MainWindow::MainWindow(QWidget* parent, const QString profileName)
     restoreEvent->setTargetState(s111_normalWindow);
     s112_minimizedWindow->addTransition(restoreEvent);
 
+    // --- DARREN START
+    ui->tabWidget->removeTab(1);
+
+    // --- DARREN END
+
     m_appWindowStateMachine->start();
 }
 
