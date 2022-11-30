@@ -190,6 +190,7 @@ int Cert::tmpfile_export(QString& filename)
     box2.setText(QDir::tempPath());
     box2.exec();
 
+
     tmpfile.open();
     ret = tmpfile.write(qa);
     tmpfile.close();
