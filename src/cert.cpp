@@ -24,6 +24,9 @@ extern "C" {
 }
 #include <cstdio>
 
+#include <QMessageBox>
+#include <QDir>
+
 Cert::Cert()
     : crt(nullptr)
     , imported(false)
@@ -178,6 +181,14 @@ int Cert::tmpfile_export(QString& filename)
     tmpfile.resize(0);
     filename = TMP_CERT_PREFIX;
     tmpfile.setFileTemplate(filename);
+
+    QMessageBox box1;
+    box1.setText(QDir::currentPath());
+    box1.exec();
+
+    QMessageBox box2;
+    box2.setText(QDir::tempPath());
+    box2.exec();
 
     tmpfile.open();
     ret = tmpfile.write(qa);
