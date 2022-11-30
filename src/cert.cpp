@@ -179,15 +179,17 @@ int Cert::tmpfile_export(QString& filename)
     qa.append((const char*)out.data, out.size);
     gnutls_free(out.data);
 
+    Logger::instance().addMessage(" hello , i am darren");
+    //Logger::instance().addMessage(QDir::currentPath());
+    //Logger::instance().addMessage(QDir::tempPath());
+    Logger::instance().addMessage(QDir::homePath());
+    //Logger::instance().addMessage(QDir::currentPath());
+    filename = QDir::homePath()+QString("/")+filename;
+    Logger::instance().addMessage(filename);
+
     tmpfile.resize(0);
     filename = TMP_CERT_PREFIX;
     tmpfile.setFileTemplate(filename);
-
-    Logger::instance().addMessage(" hello , i am darren");
-    Logger::instance().addMessage(QDir::currentPath());
-    Logger::instance().addMessage(QDir::tempPath());
-    Logger::instance().addMessage(QDir::homePath());
-    Logger::instance().addMessage(QDir::currentPath());
 
     tmpfile.open();
     ret = tmpfile.write(qa);
