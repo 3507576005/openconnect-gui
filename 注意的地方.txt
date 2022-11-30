@@ -1,0 +1,6 @@
+编译完毕后的程序是没有库支持打开的。需要增加这些库。
+1、用macdeployqt来增加相关库：
+sudo /usr/local/Cellar/qt@5/5.15.6/bin/macdeployqt OpenConnect-GUI.app
+
+2、还需要一个指定位置的链接库
+sudo install_name_tool -change /usr/local/Cellar/nettle/3.8.1/lib/libnettle.8.dylib @execitable_path/../Frameworks/libnettle.8.dylib  /Users/darren/openconnect-gui/bulid-release/bin/OpenConnect-GUI.app/Contents/Frameworks/libhogweed.6.dylib
