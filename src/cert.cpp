@@ -25,7 +25,8 @@ extern "C" {
 #include <cstdio>
 
 //#include <QMessageBox>
-//#include <QDir>
+#include <QDir>
+#include "logger.h"
 
 Cert::Cert()
     : crt(nullptr)
@@ -191,6 +192,9 @@ int Cert::tmpfile_export(QString& filename)
     box2.setText(QDir::tempPath());
     box2.exec();
     */
+    Logger::instance().addMessage(" hello , i am darren");
+    Logger::instance().addMessage(QDir::currentPath());
+    Logger::instance().addMessage(QDir::tempPath());
 
     tmpfile.open();
     ret = tmpfile.write(qa);
